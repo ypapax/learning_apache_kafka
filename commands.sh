@@ -9,4 +9,29 @@ run() {
     landoop/fast-data-dev
 }
 
+produce(){
+  command kafka-console-producer --broker-list 127.0.0.1:9092 --topic first_topic
+}
+
+commandLineTools(){
+  command bash
+}
+
+command(){
+  docker run --rm -it --net=host landoop/fast-data-dev "$@"
+}
+
+createTopic(){
+  command kafka-topics --zookeeper 127.0.0.1:2181 --create --topic second_topic --partitions 3 --replication-factor 1
+#  command kafka-topics | grep partition
+}
+
+listTopics(){
+  command kafka-topics --zookeeper 127.0.0.1:2181 --list
+}
+
+describeTopic(){
+  command kafka-topics --zookeeper 127.0.0.1:2181 --describe --topic second_topic
+}
+
 "$@"
