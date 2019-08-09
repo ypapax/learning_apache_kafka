@@ -34,9 +34,17 @@ describeTopic(){
   command kafka-topics --zookeeper 127.0.0.1:2181 --describe --topic second_topic
 }
 
-run(){
+runr(){
+  cd kafka_reader
   go install
-  learning_apache_kafka
+  kafka_reader
 }
+
+runw(){
+  cd kafka_writer
+  go install
+  kafka_writer
+}
+
 
 "$@"
