@@ -10,7 +10,7 @@ run() {
 }
 
 produce(){
-  command kafka-console-producer --broker-list 127.0.0.1:9092 --topic first_topic
+  command kafka-console-producer --broker-list 127.0.0.1:9092 --topic second_topic
 }
 
 commandLineTools(){
@@ -32,6 +32,11 @@ listTopics(){
 
 describeTopic(){
   command kafka-topics --zookeeper 127.0.0.1:2181 --describe --topic second_topic
+}
+
+run(){
+  go install
+  learning_apache_kafka
 }
 
 "$@"
