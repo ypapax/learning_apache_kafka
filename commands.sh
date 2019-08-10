@@ -46,5 +46,16 @@ runw(){
   kafka_writer
 }
 
+cleanupPolicyCompact(){
+  command kafka-topics --create --topic test_cleanup --zookeeper 127.0.0.1:2181 --config cleanup.policy=compact --partitions 3 --replication-factor 1
+}
+
+descr2(){
+  command kafka-topics --topic test_cleanup --describe --zookeeper 127.0.0.1:2181
+}
+
+alter(){
+  command kafka-topics --alter --topic test_cleanup --zookeeper 127.0.0.1:2181 --config cleanup.policy=delete
+}
 
 "$@"
